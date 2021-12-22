@@ -7,7 +7,7 @@
             "expect-webdriverio"
         ],
         "allowJs": true,
-        "target": "ES5"
+        "target": "ES6"
     },
     "include": [
         "./test/specs/**/*.ts",
