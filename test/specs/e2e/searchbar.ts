@@ -1,7 +1,7 @@
 import GlobalPage from "../../pages/GlobalPage"
-import {helionHomeUrl, searchPageUrl} from "../../config/pagesUrl"
+import {helionHomeUrl, notFoundUrl, searchPageUrl} from "../../config/pagesUrl"
 import SearchbarPage from "../../pages/components/searchbarPage";
-import { searchPhrase, searchResultTitle } from "../../config/data";
+import { incorrectSearchPhrase, notFoundMessage, searchPhrase, searchResultTitle } from "../../config/data";
 import searchbarPage from "../../pages/components/searchbarPage";
 import SearchResultPage from "../../pages/SearchResultPage";
 
@@ -29,4 +29,21 @@ describe("E2E -SearcgBar",async() =>{
         await expect(title).toContain(searchResultTitle);
         await expect(numberOfBooks).toEqual(20);
     })
+    it("should clear input value", async ()=>{
+        await SearchbarPage.clearSearchBar();
+        await expect(await SearchbarPage.getInputValue()).toContain('');
+    })
+    it("should type incorect book name and verify alert",async ()=>{
+        await SearchbarPage.typeSearchPhrase(incorrectSearchPhrase);
+        await SearchbarPage.clickOnSearchButton();
+        await expect(await SearchbarPage.getNotFoundAlertText()).toContain(notFoundMessage);
+    })
+    it("should clear input value and click on search icon" , async ()=>{
+        await SearchbarPage.clearSearchBar();
+        // await browser.pause(500);
+        await SearchbarPage.clickOnSearchButton();
+        await expect(browser).toHaveUrl(notFoundUrl);
+        await expect(await SearchbarPage.getInputValue()).toContain(incorrectSearchPhrase);
+    })
+    
 })
