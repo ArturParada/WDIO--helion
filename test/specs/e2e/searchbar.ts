@@ -1,8 +1,8 @@
 import GlobalPage from "../../pages/GlobalPage"
 import {helionHomeUrl, notFoundUrl, searchPageUrl} from "../../config/pagesUrl"
-import SearchbarPage from "../../pages/components/searchbarPage";
+import SearchbarPage from "../../pages/components/SearchBarPage";
 import { incorrectSearchPhrase, notFoundMessage, searchPhrase, searchResultTitle } from "../../config/data";
-import searchbarPage from "../../pages/components/searchbarPage";
+import searchbarPage from "../../pages/components/SearchBarPage";
 import SearchResultPage from "../../pages/SearchResultPage";
 
 describe("E2E -SearcgBar",async() =>{
